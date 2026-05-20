@@ -434,7 +434,7 @@ async def show_cart(callback: CallbackQuery, state: FSMContext) -> None:
     await state.set_state(OrderFSM.viewing_cart)
     await callback.message.edit_text(
         format_cart(order, lang),
-        reply_markup=cart_keyboard(),
+        reply_markup=cart_keyboard(lang),
     )
     await callback.answer()
 
