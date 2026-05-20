@@ -2,17 +2,14 @@
 
 from __future__ import annotations
 
-import os
 from datetime import datetime, time
 from zoneinfo import ZoneInfo
 
-from dotenv import load_dotenv
-
 from config import PLOV_OPENING_HOURS, TIMEZONE
 
-load_dotenv()
-
-TEST_MODE = os.getenv("TEST_MODE", "False").lower() == "true"
+# TEST MODE is enabled for demonstration.
+# Change to False after testing if you want real working hours again.
+TEST_MODE = True
 
 
 def now_oral() -> datetime:
