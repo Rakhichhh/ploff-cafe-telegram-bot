@@ -34,9 +34,7 @@ def check_working_status(current: datetime | None = None) -> tuple[bool, str]:
     current_time = current.time()
 
     if TEST_MODE:
-    return True, "Cafe is open in test mode."
-
-    
+        return True, "Cafe is open in test mode."
 
     if time(0, 0) <= current_time < time(8, 0):
         return (
