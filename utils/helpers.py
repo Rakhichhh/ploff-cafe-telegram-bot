@@ -62,3 +62,14 @@ def normalize_language(value: str | None) -> str:
     if value in {"ru", "kz", "en"}:
         return value
     return "ru"
+
+
+import os
+
+TEST_MODE = os.getenv("TEST_MODE", "False") == "True"
+
+def is_order_allowed(current_time=None):
+    if TEST_MODE:
+        return True
+
+ 
