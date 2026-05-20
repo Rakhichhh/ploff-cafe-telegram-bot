@@ -1,21 +1,18 @@
-
 """Business helper functions for working hours and plov schedule."""
-
-import os
-
-TEST_MODE = os.getenv("TEST_MODE", "False").lower() == "true"
-
-
-
-
-
 
 from __future__ import annotations
 
+import os
 from datetime import datetime, time
 from zoneinfo import ZoneInfo
 
+from dotenv import load_dotenv
+
 from config import PLOV_OPENING_HOURS, TIMEZONE
+
+load_dotenv()
+
+TEST_MODE = os.getenv("TEST_MODE", "False").lower() == "true"
 
 
 def now_oral() -> datetime:
@@ -30,11 +27,11 @@ def check_working_status(current: datetime | None = None) -> tuple[bool, str]:
     11:00-00:00: normal ordering is allowed.
     00:00-08:00: orders are blocked.
     """
+    if TEST_MODE:
+        return True, "✅ Cafe is open in test mode."
+
     current = current or now_oral()
     current_time = current.time()
-
-    if TEST_MODE:
-        return True, "Cafe is open in test mode."
 
     if time(0, 0) <= current_time < time(8, 0):
         return (
@@ -75,6 +72,3 @@ def normalize_language(value: str | None) -> str:
     if value in {"ru", "kz", "en"}:
         return value
     return "ru"
-
-
- 
