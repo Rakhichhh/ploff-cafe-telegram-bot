@@ -1,4 +1,14 @@
+
 """Business helper functions for working hours and plov schedule."""
+
+import os
+
+TEST_MODE = os.getenv("TEST_MODE", "False").lower() == "true"
+
+
+
+
+
 
 from __future__ import annotations
 
@@ -22,6 +32,11 @@ def check_working_status(current: datetime | None = None) -> tuple[bool, str]:
     """
     current = current or now_oral()
     current_time = current.time()
+
+    if TEST_MODE:
+    return True, "Cafe is open in test mode."
+
+    
 
     if time(0, 0) <= current_time < time(8, 0):
         return (
@@ -63,13 +78,5 @@ def normalize_language(value: str | None) -> str:
         return value
     return "ru"
 
-
-import os
-
-TEST_MODE = os.getenv("TEST_MODE", "False") == "True"
-
-def is_order_allowed(current_time=None):
-    if TEST_MODE:
-        return True
 
  
