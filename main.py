@@ -476,8 +476,13 @@ async def confirm_order(callback: CallbackQuery, state: FSMContext, bot: Bot) ->
         await callback.answer(text(lang, "choose_table_first"), show_alert=True)
         return
 
-    append_json_record(ORDERS_PATH, order.to_dict())
-    receipt = order.make_receipt()
+    try:
+    order_data = order.to_dict()
+    append_json_record(ORDERS_PATH, order_data)
+    logging.info("Order saved to %s: %s", ORDERS_PATH, order_data)
+except Exception as error:
+    logging.exception("Could not save order to orders.json: %s", error)
+receipt = order.make_receipt()
 
     if KITCHEN_GROUP_ID != 0:
         try:
