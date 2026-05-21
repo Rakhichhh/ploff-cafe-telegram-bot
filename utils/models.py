@@ -194,7 +194,12 @@ def build_menu_item(raw: Dict[str, object], language: str = "ru") -> MenuItem:
     """Factory that converts a JSON dictionary into a typed OOP object."""
     item_type = str(raw.get("type", "food"))
     item_id = str(raw.get("id", "unknown"))
-    category = str(raw.get("category", "Other"))
+    category_key = f"category_{language}"
+    category = str(
+    raw.get(category_key)
+    or raw.get("category_ru")
+    or "Other"
+)
     price = int(raw.get("price", 0))
     is_available = bool(raw.get("is_available", True))
     name_key = f"name_{language}"
