@@ -145,7 +145,7 @@ async def choose_order_type(callback: CallbackQuery, state: FSMContext) -> None:
         await state.set_state(OrderFSM.choosing_table)
         await callback.message.edit_text(
             "🍽 Choose your table number from 1 to 36:",
-            reply_markup=cart_keyboard(lang),
+            reply_markup=table_keyboard(),
         )
     await callback.answer()
 
@@ -208,12 +208,7 @@ async def show_items(callback: CallbackQuery, state: FSMContext) -> None:
     data = await state.get_data()
     lang = data.get("language", "ru")
     category = callback.data.replace("category:", "", 1)
-    category_key = f"category_{lang}"
-
-    items = [
-    item for item in load_menu()
-    if item.get(category_key) == category
-]
+    items = [item for item in load_menu() if item.get("category") == category]
 
     await state.set_state(OrderFSM.choosing_items)
     await callback.message.edit_text(
@@ -386,3 +381,4 @@ async def main() -> None:
 
 if __name__ == "__main__":
     asyncio.run(main())
+
