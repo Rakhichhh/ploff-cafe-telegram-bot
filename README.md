@@ -212,6 +212,16 @@ cafe_telegram_bot/
     ├── __init__.py
     └── test_models.py
 ```
+### Start and Language Selection
+<img width="1179" height="2556" alt="IMAGE 2026-05-22 07:49:48" src="https://github.com/user-attachments/assets/9ce4fb04-3177-47c2-9cef-fa58ca7c4ae8" 
+### Order Type Selection
+<img width="1179" height="2556" alt="IMAGE 2026-05-22 07:50:37" src="https://github.com/user-attachments/assets/f6f0e5c8-d66e-4231-bedb-fdbcae990672" />
+### Menu Categories
+<img width="526" height="664" alt="Снимок экрана — 2026-05-22 в 07 53 48" src="https://github.com/user-attachments/assets/988903d1-0c0d-460d-ab08-ef53481ce44a" />
+### Cart
+<img width="484" height="219" alt="Снимок экрана — 2026-05-22 в 07 55 02" src="https://github.com/user-attachments/assets/6babb8fe-cf3f-4178-9d70-263074d41796" />
+### Kitchen Receipt
+<img width="379" height="216" alt="Снимок экрана — 2026-05-22 в 07 55 57" src="https://github.com/user-attachments/assets/a62aee89-fe0e-431f-a523-2b355c2517af" />
 
 ---
 
